@@ -1,0 +1,15 @@
+{
+  "name": "DiagramLayoutManager",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "jquery-ui": "latest"
+  },
+  "homepage": "https://github.com/zhangpn/DiagramLayoutManager",
+  "authors": [
+    "Dana Zhang <danakzhang@gmail.com>"
+  ],
+  "license": "MIT"
+}
