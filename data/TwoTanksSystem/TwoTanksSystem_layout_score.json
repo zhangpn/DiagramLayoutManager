@@ -1,0 +1,37 @@
+{
+    "properties": {
+        "nbrOfComps": 15,
+        "nbrOfConns": 18,
+        "nbrOfOverlaps": 0,
+        "nbrOfCrossings": 0,
+        "nbrOfTurns": 33,
+        "pathLengths": 2320
+    },
+    "weights": {
+        "nbrOfComps": 1,
+        "nbrOfConns": 1,
+        "nbrOfOverlaps": -0.5,
+        "nbrOfCrossings": -1,
+        "nbrOfTurns": -0.5,
+        "pathLengths": -0.5
+    },
+    "score": {
+        "Final": 33,
+        "Components": {
+            "Final": 15,
+            "Categories": {
+                "Count": 15,
+                "Overlap": 0
+            }
+        },
+        "Connections": {
+            "Final": 18,
+            "Categories": {
+                "Count": 18,
+                "Crossing": 0,
+                "Turn": -16.5,
+                "PathLength": -1160
+            }
+        }
+    }
+}

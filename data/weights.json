@@ -1,0 +1,8 @@
+{
+    "nbrOfComps": 1,
+        "nbrOfConns": 1,
+        "nbrOfOverlaps": -0.5,
+        "nbrOfCrossings": -1,
+        "nbrOfTurns": -0.5,
+        "pathLengths": -0.5
+}

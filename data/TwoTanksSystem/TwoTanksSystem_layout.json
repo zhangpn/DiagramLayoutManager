@@ -1,0 +1,880 @@
+{
+    "components": [
+        {
+            "id": "8",
+            "name": "A",
+            "position": {
+                "x": 370,
+                "y": 270
+            },
+            "size": {
+                "width": 30,
+                "height": 30
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 15
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 15
+                    }
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "name": "Chart",
+            "position": {
+                "x": 210,
+                "y": 256
+            },
+            "size": {
+                "width": 115,
+                "height": 78
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 26
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 52
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 115,
+                        "y": 39
+                    }
+                }
+            ]
+        },
+        {
+            "id": "22",
+            "name": "Integrator",
+            "position": {
+                "x": 510,
+                "y": 135
+            },
+            "size": {
+                "width": 30,
+                "height": 30
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 15
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 15
+                    }
+                }
+            ]
+        },
+        {
+            "id": "23",
+            "name": "Integrator1",
+            "position": {
+                "x": 510,
+                "y": 430
+            },
+            "size": {
+                "width": 30,
+                "height": 30
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 15
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 15
+                    }
+                }
+            ]
+        },
+        {
+            "id": "39",
+            "name": "Scope",
+            "position": {
+                "x": 370,
+                "y": 334
+            },
+            "size": {
+                "width": 30,
+                "height": 32
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "28",
+            "name": "Subsystem",
+            "position": {
+                "x": 210,
+                "y": 74
+            },
+            "size": {
+                "width": 100,
+                "height": 42
+            },
+            "ports": [
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 100,
+                        "y": 21
+                    }
+                }
+            ]
+        },
+        {
+            "id": "31",
+            "name": "Subsystem1",
+            "position": {
+                "x": 210,
+                "y": 419
+            },
+            "size": {
+                "width": 100,
+                "height": 42
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 21
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 100,
+                        "y": 21
+                    }
+                }
+            ]
+        },
+        {
+            "id": "13",
+            "name": "Subtract",
+            "position": {
+                "x": 370,
+                "y": 122
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "16",
+            "name": "Subtract1",
+            "position": {
+                "x": 370,
+                "y": 417
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "25",
+            "name": "add",
+            "position": {
+                "x": 130,
+                "y": 257
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "27",
+            "name": "add1",
+            "position": {
+                "x": 140,
+                "y": 382
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "20",
+            "name": "divide",
+            "position": {
+                "x": 430,
+                "y": 132
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "21",
+            "name": "divide1",
+            "position": {
+                "x": 430,
+                "y": 427
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        },
+        {
+            "id": "24",
+            "name": "h1_init",
+            "position": {
+                "x": 70,
+                "y": 265
+            },
+            "size": {
+                "width": 30,
+                "height": 30
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 15
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 15
+                    }
+                }
+            ]
+        },
+        {
+            "id": "26",
+            "name": "h2_init",
+            "position": {
+                "x": 70,
+                "y": 375
+            },
+            "size": {
+                "width": 30,
+                "height": 30
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 15
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 15
+                    }
+                }
+            ]
+        }
+    ],
+    "connections": [
+        {
+            "srcID": "28=>#out:1",
+            "dstID": "13=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 310,
+                    "y": 95
+                },
+                {
+                    "x": 335,
+                    "y": 95
+                },
+                {
+                    "x": 335,
+                    "y": 130
+                },
+                {
+                    "x": 335,
+                    "y": 133
+                },
+                {
+                    "x": 370,
+                    "y": 133
+                }
+            ]
+        },
+        {
+            "srcID": "31=>#out:1",
+            "dstID": "16=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 310,
+                    "y": 440
+                },
+                {
+                    "x": 370,
+                    "y": 439
+                }
+            ]
+        },
+        {
+            "srcID": "1=>#out:1",
+            "dstID": "39=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 325,
+                    "y": 295
+                },
+                {
+                    "x": 342,
+                    "y": 295
+                },
+                {
+                    "x": 342,
+                    "y": 350
+                },
+                {
+                    "x": 370,
+                    "y": 350
+                }
+            ]
+        },
+        {
+            "srcID": "1=>#out:1",
+            "dstID": "16=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 325,
+                    "y": 295
+                },
+                {
+                    "x": 342,
+                    "y": 295
+                },
+                {
+                    "x": 342,
+                    "y": 350
+                },
+                {
+                    "x": 342,
+                    "y": 425
+                },
+                {
+                    "x": 342,
+                    "y": 428
+                },
+                {
+                    "x": 370,
+                    "y": 428
+                }
+            ]
+        },
+        {
+            "srcID": "1=>#out:1",
+            "dstID": "13=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 325,
+                    "y": 295
+                },
+                {
+                    "x": 342,
+                    "y": 295
+                },
+                {
+                    "x": 342,
+                    "y": 145
+                },
+                {
+                    "x": 342,
+                    "y": 144
+                },
+                {
+                    "x": 370,
+                    "y": 144
+                }
+            ]
+        },
+        {
+            "srcID": "13=>#out:1",
+            "dstID": "20=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 400,
+                    "y": 138
+                },
+                {
+                    "x": 430,
+                    "y": 143
+                }
+            ]
+        },
+        {
+            "srcID": "8=>#out:1",
+            "dstID": "20=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 400,
+                    "y": 285
+                },
+                {
+                    "x": 409,
+                    "y": 285
+                },
+                {
+                    "x": 409,
+                    "y": 155
+                },
+                {
+                    "x": 409,
+                    "y": 154
+                },
+                {
+                    "x": 430,
+                    "y": 154
+                }
+            ]
+        },
+        {
+            "srcID": "8=>#out:1",
+            "dstID": "21=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 400,
+                    "y": 285
+                },
+                {
+                    "x": 409,
+                    "y": 285
+                },
+                {
+                    "x": 409,
+                    "y": 450
+                },
+                {
+                    "x": 409,
+                    "y": 449
+                },
+                {
+                    "x": 430,
+                    "y": 449
+                }
+            ]
+        },
+        {
+            "srcID": "16=>#out:1",
+            "dstID": "21=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 400,
+                    "y": 433
+                },
+                {
+                    "x": 430,
+                    "y": 438
+                }
+            ]
+        },
+        {
+            "srcID": "20=>#out:1",
+            "dstID": "22=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 460,
+                    "y": 148
+                },
+                {
+                    "x": 510,
+                    "y": 150
+                }
+            ]
+        },
+        {
+            "srcID": "21=>#out:1",
+            "dstID": "23=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 460,
+                    "y": 443
+                },
+                {
+                    "x": 510,
+                    "y": 445
+                }
+            ]
+        },
+        {
+            "srcID": "22=>#out:1",
+            "dstID": "25=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 540,
+                    "y": 150
+                },
+                {
+                    "x": 552,
+                    "y": 150
+                },
+                {
+                    "x": 552,
+                    "y": 209
+                },
+                {
+                    "x": 108,
+                    "y": 209
+                },
+                {
+                    "x": 108,
+                    "y": 265
+                },
+                {
+                    "x": 108,
+                    "y": 268
+                },
+                {
+                    "x": 130,
+                    "y": 268
+                }
+            ]
+        },
+        {
+            "srcID": "24=>#out:1",
+            "dstID": "25=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 100,
+                    "y": 280
+                },
+                {
+                    "x": 130,
+                    "y": 279
+                }
+            ]
+        },
+        {
+            "srcID": "25=>#out:1",
+            "dstID": "1=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 160,
+                    "y": 273
+                },
+                {
+                    "x": 210,
+                    "y": 282
+                }
+            ]
+        },
+        {
+            "srcID": "26=>#out:1",
+            "dstID": "27=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 100,
+                    "y": 390
+                },
+                {
+                    "x": 140,
+                    "y": 393
+                }
+            ]
+        },
+        {
+            "srcID": "23=>#out:1",
+            "dstID": "27=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 540,
+                    "y": 445
+                },
+                {
+                    "x": 555,
+                    "y": 445
+                },
+                {
+                    "x": 555,
+                    "y": 481
+                },
+                {
+                    "x": 120,
+                    "y": 481
+                },
+                {
+                    "x": 120,
+                    "y": 404
+                },
+                {
+                    "x": 140,
+                    "y": 404
+                }
+            ]
+        },
+        {
+            "srcID": "27=>#out:1",
+            "dstID": "31=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 170,
+                    "y": 398
+                },
+                {
+                    "x": 179,
+                    "y": 398
+                },
+                {
+                    "x": 179,
+                    "y": 438
+                },
+                {
+                    "x": 179,
+                    "y": 440
+                },
+                {
+                    "x": 210,
+                    "y": 440
+                }
+            ]
+        },
+        {
+            "srcID": "27=>#out:1",
+            "dstID": "1=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 170,
+                    "y": 398
+                },
+                {
+                    "x": 179,
+                    "y": 398
+                },
+                {
+                    "x": 179,
+                    "y": 313
+                },
+                {
+                    "x": 179,
+                    "y": 308
+                },
+                {
+                    "x": 210,
+                    "y": 308
+                }
+            ]
+        }
+    ]
+}

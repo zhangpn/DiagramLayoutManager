@@ -71,6 +71,7 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('fileUploadCtrl', ['$scope',
     function($scope) {
+        $scope.btnName = "Draw Diagram";
         $scope.filenames = [];
         $scope.add = function(){
             var f = document.getElementById('file').files,
@@ -79,6 +80,7 @@ controllers.controller('fileUploadCtrl', ['$scope',
             for (i = 0; i < f.length; i += 1) {
                 $scope.filenames.push(f[i].name);
             }
+            this.clearFileNumberDisplay();
         };
 
         $scope.deleteFile = function (file) {
@@ -90,16 +92,11 @@ controllers.controller('fileUploadCtrl', ['$scope',
             $scope.filenames = [];
         };
 
-        $scope.retFileNames = function () {
-            return $scope.filenames;
-        };
-
-
         $scope.displayNbrOfFiles = function (elm) {
             var input = document.getElementById('nbrFiles');
             if (elm.files.length > 0) {
                 input.value = elm.files.length === 1 ? elm.files.length + " file selected"
-                                                     : elm.files.length + " files selected";
+                    : elm.files.length + " files selected";
             }
         };
 
@@ -107,5 +104,59 @@ controllers.controller('fileUploadCtrl', ['$scope',
             var input = document.getElementById('nbrFiles');
             input.value = "";
         };
+
+        var dropbox = document.getElementById("upload-drop-zone"),
+            dropText = 'Drop files here...',
+            invalidClass = 'invalid';
+
+        $scope.dropText = dropText;
+
+        // init event handlers
+        function dragEnterLeave(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            $scope.$apply(function(){
+                $scope.dropText = dropText;
+                $scope.dropClass = ''
+            })
+        }
+
+
+            dropbox.addEventListener("dragenter", dragEnterLeave, false);
+            dropbox.addEventListener("dragleave", dragEnterLeave, false);
+
+            dropbox.addEventListener("dragover", function(evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                var ok = evt.dataTransfer && evt.dataTransfer.types && evt.dataTransfer.types.indexOf('Files') >= 0;
+                $scope.$apply(function(){
+                    $scope.dropText = ok ? dropText : 'Only files are allowed!';
+                    $scope.dropClass = ok ? 'over' : invalidClass;
+                })
+            }, false);
+
+            dropbox.addEventListener("drop", function(evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $scope.$apply(function(){
+                    $scope.dropText = dropText;
+                    $scope.dropClass = '';
+                });
+
+                var files = evt.dataTransfer.files;
+                if (files.length > 0) {
+                    $scope.$apply(function(){
+                        for (var i = 0; i < files.length; i++) {
+                            if (files[i].name.indexOf(".json") > -1) {
+                                $scope.filenames.push(files[i].name);
+                            } else {
+                                $scope.dropText = 'Only json files are allowed!';
+                                $scope.dropClass = invalidClass;
+                            }
+                        }
+                    })
+                }
+            });
+
     }
 ]);

@@ -1,0 +1,220 @@
+{
+    "components": [
+        {
+            "id": "1",
+            "name": "In1",
+            "position": {
+                "x": 65,
+                "y": 203
+            },
+            "size": {
+                "width": 30,
+                "height": 14
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 7
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 7
+                    }
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Data Type Conversion",
+            "position": {
+                "x": 255,
+                "y": 183
+            },
+            "size": {
+                "width": 75,
+                "height": 34
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 17
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 75,
+                        "y": 17
+                    }
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Gain",
+            "position": {
+                "x": 140,
+                "y": 150
+            },
+            "size": {
+                "width": 30,
+                "height": 30
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 15
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 15
+                    }
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Logical\nOperator",
+            "position": {
+                "x": 215,
+                "y": 272
+            },
+            "size": {
+                "width": 30,
+                "height": 31
+            },
+            "ports": [
+                {
+                    "name": "in1",
+                    "id": "#in:1",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "name": "in2",
+                    "id": "#in:2",
+                    "relative_position": {
+                        "x": 0,
+                        "y": 22
+                    }
+                },
+                {
+                    "name": "out1",
+                    "id": "#out:1",
+                    "relative_position": {
+                        "x": 30,
+                        "y": 16
+                    }
+                }
+            ]
+        }
+    ],
+    "connections": [
+        {
+            "srcID": "1=>#out:1",
+            "dstID": "2=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 95,
+                    "y": 210
+                },
+                {
+                    "x": 110,
+                    "y": 210
+                },
+                {
+                    "x": 110,
+                    "y": 295
+                },
+                {
+                    "x": 162,
+                    "y": 295
+                },
+                {
+                    "x": 162,
+                    "y": 200
+                },
+                {
+                    "x": 255,
+                    "y": 200
+                }
+            ]
+        },
+        {
+            "srcID": "1=>#out:1",
+            "dstID": "5=>#in:2",
+            "pathPoints": [
+                {
+                    "x": 95,
+                    "y": 210
+                },
+                {
+                    "x": 110,
+                    "y": 210
+                },
+                {
+                    "x": 110,
+                    "y": 295
+                },
+                {
+                    "x": 162,
+                    "y": 295
+                },
+                {
+                    "x": 162,
+                    "y": 294
+                },
+                {
+                    "x": 215,
+                    "y": 294
+                }
+            ]
+        },
+        {
+            "srcID": "1=>#out:1",
+            "dstID": "3=>#in:1",
+            "pathPoints": [
+                {
+                    "x": 95,
+                    "y": 210
+                },
+                {
+                    "x": 110,
+                    "y": 210
+                },
+                {
+                    "x": 112,
+                    "y": 210
+                },
+                {
+                    "x": 112,
+                    "y": 165
+                },
+                {
+                    "x": 140,
+                    "y": 165
+                }
+            ]
+        }
+    ]
+}

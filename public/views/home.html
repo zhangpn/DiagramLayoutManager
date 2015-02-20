@@ -1,55 +1,31 @@
 <!-- File upload: lists file names based on Bootstrap example: http://codepen.io/claviska/pen/vAgmd-->
 <div ng-controller="fileUploadCtrl">
 
-    <div class="col-sm-6">
-        <strong>Select files to upload</strong>
-        <div class="input-group">
+    <div class="row">
+
+        <div class="col col-sm-3">
+            <strong>Select files to upload</strong>
+            <div class="input-group">
                 <span class="input-group-btn">
                     <span class="btn btn-primary btn-file" ng-click="clearFileNumberDisplay()">
                         Browse&hellip; <input type="file" id="file" multiple onchange="angular.element(this).scope().displayNbrOfFiles(this)" />
                     </span>
                 </span>
-            <input type="text" class="form-control" id="nbrFiles" readonly>
-        </div><br>
+                <input type="text" class="form-control" id="nbrFiles" readonly>
+            </div><br>
+            <button class="btn btn-success center-block" ng-click="add()">Upload</button><br>
 
-        <span>
-            <button class="btn btn-success" ng-click="add()">Upload</button>
-            <button class="btn btn-warning" ng-click="clearAll()">Clear All</button>
-        </span>
+            <div id="upload-drop-zone" class="upload-drop-zone" ng-class="dropClass"><span>{{dropText}}</span></div>
 
-        <div>
             <ul class="list-unstyled">
                 <li ng-repeat="file in filenames">
                     <div><span class="glyphicon glyphicon-remove" ng-click="deleteFile(file)"/> {{file}}</div>
                 </li>
             </ul>
+
+            <button class="btn btn-primary" ng-click="score()">Draw Diagram</button>
+            <button class="btn btn-warning pull-right" ng-click="clearAll()">Clear All</button>
         </div>
 
     </div>
-
-
-
-
-
-
-<!-- todo: add dropbox here -->
-<!--<div id="dropbox" class="dropbox" ng-class="dropClass"><span>{{dropText}}</span></div>-->
-<!--<div ng-show="files.length">-->
-    <!--<div ng-repeat="file in files.slice(0)">-->
-        <!--<span>{{file.webkitRelativePath || file.name}}</span>-->
-        <!--(<span ng-switch="file.size > 1024*1024">-->
-                <!--<span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>-->
-                <!--<span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>-->
-            <!--</span>)-->
-    <!--</div>-->
-    <!--<input type="button" ng-click="uploadFile()" value="Upload" />-->
-    <!--<div ng-show="progressVisible">-->
-        <!--<div class="percent">{{progress}}%</div>-->
-        <!--<div class="progress-bar">-->
-            <!--<div class="uploaded" ng-style="{'width': progress+'%'}"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
 </div>

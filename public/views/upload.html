@@ -1,0 +1,10 @@
+<strong>Select files to upload</strong>
+<div class="input-group">
+    <span class="input-group-btn">
+        <span class="btn btn-xs btn-primary btn-file" ng-click="clearFileNumberDisplay()">
+            Browse<input type="file" id="file" multiple onchange="angular.element(this).scope().displayNbrOfFiles(this)" />
+        </span>
+    </span>
+    <input type="text" class="input-xs form-control" id="nbrFiles" readonly>
+    <span> <button class="btn btn-xs btn-success pull-right" ng-click="add()">Upload</button></span><br>
+</div><br>
