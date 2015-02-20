@@ -102,5 +102,10 @@ controllers.controller('fileUploadCtrl', ['$scope',
                                                      : elm.files.length + " files selected";
             }
         };
+
+        $scope.clearFileNumberDisplay = function () {
+            var input = document.getElementById('nbrFiles');
+            input.value = "";
+        };
     }
 ]);
