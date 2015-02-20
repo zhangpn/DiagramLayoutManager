@@ -71,17 +71,36 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('fileUploadCtrl', ['$scope',
     function($scope) {
-        $scope.files = [];
+        $scope.filenames = [];
         $scope.add = function(){
             var f = document.getElementById('file').files,
                 i;
 
             for (i = 0; i < f.length; i += 1) {
-                $scope.files.push(f[i].name);
+                $scope.filenames.push(f[i].name);
             }
         };
+
+        $scope.deleteFile = function (file) {
+            var ind = $scope.filenames.indexOf(file);
+            $scope.filenames.splice(ind, 1);
+        };
+
+        $scope.clearAll = function () {
+            $scope.filenames = [];
+        };
+
         $scope.retFileNames = function () {
-            return $scope.files;
+            return $scope.filenames;
+        };
+
+
+        $scope.displayNbrOfFiles = function (elm) {
+            var input = document.getElementById('nbrFiles');
+            if (elm.files.length > 0) {
+                input.value = elm.files.length === 1 ? elm.files.length + " file selected"
+                                                     : elm.files.length + " files selected";
+            }
         };
     }
 ]);
