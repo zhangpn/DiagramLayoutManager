@@ -73,19 +73,18 @@ controllers.controller('fileUploadCtrl', ['$scope',
     function($scope) {
         $scope.btnName = "Draw Diagram";
         $scope.filenames = [];
-        $scope.add = function(){
-            var f = document.getElementById('file').files,
-                i;
+        $scope.layoutFiles = [];
 
-            for (i = 0; i < f.length; i += 1) {
-                $scope.filenames.push(f[i].name);
-            }
+        $scope.upload = function () {
             this.clearFileNumberDisplay();
+
+            return $scope.filenames;
         };
 
         $scope.deleteFile = function (file) {
             var ind = $scope.filenames.indexOf(file);
             $scope.filenames.splice(ind, 1);
+            $scope.layoutFiles.splice(ind, 1);
         };
 
         $scope.clearAll = function () {
@@ -93,16 +92,59 @@ controllers.controller('fileUploadCtrl', ['$scope',
         };
 
         $scope.displayNbrOfFiles = function (elm) {
-            var input = document.getElementById('nbrFiles');
-            if (elm.files.length > 0) {
-                input.value = elm.files.length === 1 ? elm.files.length + " file selected"
-                    : elm.files.length + " files selected";
+            var files = elm.files,
+                input = document.getElementById("nbrFiles"),
+                i,
+                counter = 0;
+
+            this.clearFileNumberDisplay();
+
+            for (i = 0; i < files.length; i += 1) {
+                if (files[i].name.indexOf(".json")) {
+                    $scope.filenames.push(files[i].name);
+                    $scope.layoutFiles.push(files[i]);
+                    ++counter;
+                }
+            }
+
+            if (counter > 0) {
+                input.value = counter === 1 ? counter + " file selected"
+                    : counter + " files selected";
             }
         };
 
         $scope.clearFileNumberDisplay = function () {
             var input = document.getElementById('nbrFiles');
             input.value = "";
+        };
+
+        $scope.draw = function () {
+            var holder = document.getElementById("myholder"),
+                parsedJSONFileContent,
+                graph,
+                paper;
+
+            if ($scope.layoutFiles.length > 0) {
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    if (e.target && e.target.result) {
+                        parsedJSONFileContent = JSON.parse(e.target.result);
+                        //                holder.innerHTML = "Success!";
+                    }
+                    graph = new joint.dia.Graph;
+                    paper = new joint.dia.Paper({
+                        el: $('#myholder'),
+                        model: graph
+                    });
+
+                    parseLayout(parsedJSONFileContent, graph);
+                };
+
+                reader.readAsText($scope.layoutFiles[$scope.layoutFiles.length - 1]);
+            } else {
+                holder.innerHTML = "No layout file is provided!";
+            }
         };
 
         var dropbox = document.getElementById("upload-drop-zone"),
@@ -115,48 +157,51 @@ controllers.controller('fileUploadCtrl', ['$scope',
         function dragEnterLeave(evt) {
             evt.stopPropagation();
             evt.preventDefault();
-            $scope.$apply(function(){
+            $scope.$apply(function () {
                 $scope.dropText = dropText;
                 $scope.dropClass = ''
             })
         }
 
 
-            dropbox.addEventListener("dragenter", dragEnterLeave, false);
-            dropbox.addEventListener("dragleave", dragEnterLeave, false);
+        dropbox.addEventListener("dragenter", dragEnterLeave, false);
+        dropbox.addEventListener("dragleave", dragEnterLeave, false);
 
-            dropbox.addEventListener("dragover", function(evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                var ok = evt.dataTransfer && evt.dataTransfer.types && evt.dataTransfer.types.indexOf('Files') >= 0;
-                $scope.$apply(function(){
-                    $scope.dropText = ok ? dropText : 'Only files are allowed!';
-                    $scope.dropClass = ok ? 'over' : invalidClass;
-                })
-            }, false);
+        dropbox.addEventListener("dragover", function (evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var ok = evt.dataTransfer && evt.dataTransfer.types && evt.dataTransfer.types.indexOf('Files') >= 0;
+            $scope.$apply(function () {
+                $scope.dropText = ok ? dropText : 'Only files are allowed!';
+                $scope.dropClass = ok ? 'over' : invalidClass;
+            })
+        }, false);
 
-            dropbox.addEventListener("drop", function(evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                $scope.$apply(function(){
-                    $scope.dropText = dropText;
-                    $scope.dropClass = '';
-                });
-
-                var files = evt.dataTransfer.files;
-                if (files.length > 0) {
-                    $scope.$apply(function(){
-                        for (var i = 0; i < files.length; i++) {
-                            if (files[i].name.indexOf(".json") > -1) {
-                                $scope.filenames.push(files[i].name);
-                            } else {
-                                $scope.dropText = 'Only json files are allowed!';
-                                $scope.dropClass = invalidClass;
-                            }
-                        }
-                    })
-                }
+        dropbox.addEventListener("drop", function (evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            $scope.$apply(function () {
+                $scope.dropText = dropText;
+                $scope.dropClass = '';
             });
+
+            var files = evt.dataTransfer.files;
+            if (files.length > 0) {
+                $scope.$apply(function () {
+                    for (var i = 0; i < files.length; i++) {
+                        if (files[i].name.indexOf(".json") > -1) {
+                            $scope.filenames.push(files[i].name);
+                            $scope.layoutFiles.push(files[i]);
+                        } else {
+                            $scope.dropText = 'Only json files are allowed!';
+                            $scope.dropClass = invalidClass;
+                        }
+                    }
+                })
+            }
+
+        });
 
     }
 ]);
+

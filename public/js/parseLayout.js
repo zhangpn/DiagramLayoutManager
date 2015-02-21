@@ -9,7 +9,7 @@ var _componentList = {},
     DSTID = "dstID",
     DELIM = "=>";
 
-var graph;
+var mGraph;
 
 //<editor-fold desc="Parsing Function">
 /**
@@ -75,7 +75,7 @@ var parseComponents = function (components) {
             });
         }
 
-        graph.addCell(rect);
+        mGraph.addCell(rect);
         componentMap[component.id] = rect;
         _componentList[component.id] = {
             name: component.name,
@@ -127,7 +127,7 @@ var parseConnections = function (connections, componentMap) {
         }
 
         link.set('vertices', connection.pathPoints);
-        graph.addCell(link);
+        mGraph.addCell(link);
     }
 };
 
@@ -165,106 +165,14 @@ var _getConnectorInfo = function (connection, ID) {
  * Main function to execute the parser
  * @param layout
  */
-var parseLayout = function (layout) {
+var parseLayout = function (layout, graph) {
     var componentMap;
 
+    mGraph = graph;
     componentMap = parseComponents(layout.components);
     if (layout.connections) {
         parseConnections(layout.connections, componentMap);
     }
 
 };
-//</editor-fold>
-
-//<editor-fold desc="Main Entry">
-
-var paper;
-
-
-// draw diagram from single layout.json
-var layouts = document.getElementById("upload_layout_files"),
-    weights = document.getElementById("upload_weight_files");
-var holder = document.getElementById("myholder");
-var parsedJSONFileContent;
-var uploadedLayoutFiles = [],
-    uploadedWeightFiles = [];
-
-var layoutFileSelectHandler = function (event) {
-
-    var files = event.target.files || event.dataTransfer.files;
-    if (files && files.length > 0) {
-        uploadedLayoutFiles.push(files[0]);
-        var item = document.createElement("div");
-//        $(item).html('<a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>');
-        $(item).html(files[0].name);
-        layoutFileGroup.append(item);
-    }
-};
-
-var weightFileSelectHandler = function (event) {
-
-    var files = event.target.files || event.dataTransfer.files;
-    if (files && files.length > 0) {
-        uploadedWeightFiles.push(files[0]);
-        var item = document.createElement("div");
-        $(item).html(files[0].name);
-        weightFileGroup.append(item);
-    }
-};
-
-var drawDiagram = function () {
-    $(holder).empty();
-    if (uploadedLayoutFiles.length > 0) {
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            if (e.target && e.target.result) {
-                parsedJSONFileContent = JSON.parse(e.target.result);
-    //                holder.innerHTML = "Success!";
-            }
-            graph = new joint.dia.Graph;
-            paper = new joint.dia.Paper({
-                el: $('#myholder'),
-                model: graph
-            });
-
-            parseLayout(parsedJSONFileContent);
-        };
-
-        reader.readAsText(uploadedLayoutFiles[uploadedLayoutFiles.length - 1]);
-    } else {
-        holder.innerHTML = "No layout file is provided!";
-    }
-};
-
-var scoreDiagram = function () {
-    var propertiesPanel = document.getElementById("properties"),
-        weightsPanel = document.getElementById("weights");
-
-    $(propertiesPanel).empty();
-    $(weightsPanel).empty();
-
-    if (uploadedWeightFiles.length > 0) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            if (e.target && e.target.result) {
-                parsedJSONFileContent = JSON.stringify(e.target.result);
-            }
-
-            // todo: pretty print method from score
-
-            weightsPanel.innerHTML = parsedJSONFileContent;
-        };
-
-        reader.readAsText(uploadedWeightFiles[uploadedWeightFiles.length - 1]);
-    } else {
-        holder.innerHTML = "No weight file is provided!";
-    }
-
-};
-
-
-layouts.addEventListener('change', layoutFileSelectHandler);
-weights.addEventListener('change', weightFileSelectHandler);
-
 //</editor-fold>
