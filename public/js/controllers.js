@@ -10,36 +10,20 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('fileUploadCtrl', ['$scope',
     function($scope) {
+
         var DELETE_LAYOUT_FILE = "L",
             DELETE_WEIGHT_FILE = "W",
-            DELETE_ALL = "A";
+            DELETE_ALL = "A",
+            EXT = ".json",
+            WFILE = "weight",
+            LFILE = "layout",
+            dropbox = document.getElementById("upload-drop-zone"),
+            dropText = 'Drop files here...',
+            invalidClass = 'invalid',
+            _deleteFile,
+            _clearFileNumberDisplay;
 
-        $scope.drawBtnName = "Draw";
-        $scope.scoreBtnName = "Score";
-        $scope.resetBtnName = "Reset";
-
-        $scope.layoutFiles = {};
-
-        $scope.weightFiles = {};
-
-        $scope.layouts = {};
-
-        $scope.upload = function () {
-            this.clearFileNumberDisplay();
-
-            $scope.layoutNames = Object.keys($scope.layoutFiles);
-            $scope.weightNames = Object.keys($scope.weightFiles);
-        };
-
-        $scope.deleteLayoutFile = function (file) {
-            this.deleteFile(file, DELETE_LAYOUT_FILE);
-        };
-
-        $scope.deleteWeightFile = function (file) {
-            this.deleteFile(file, DELETE_WEIGHT_FILE);
-        };
-
-        $scope.deleteFile = function (file, opt) {
+        _deleteFile = function (file, opt) {
             if (opt === DELETE_ALL) {
                 $scope.layoutFiles = {};
                 $scope.weightFiles = {};
@@ -50,21 +34,32 @@ controllers.controller('fileUploadCtrl', ['$scope',
             }
         };
 
-        $scope.clearAll = function () {
-            $scope.filenames = [];
+        _clearFileNumberDisplay = function () {
+            var input = document.getElementById('nbrFiles');
+            input.value = "";
         };
 
+
+        $scope.drawBtnName = "Draw";
+        $scope.scoreBtnName = "Score";
+        $scope.resetBtnName = "Reset";
+        $scope.dropText = dropText;
+
+        $scope.layoutFiles = {};
+        $scope.weightFiles = {};
+
+        $scope.layouts = {};
+
+
+
         $scope.displayNbrOfFiles = function (elm) {
-            var EXT = ".json",
-                WFILE = "weight",
-                LFILE = "layout",
-                files = elm.files,
+            var files = elm.files,
                 input = document.getElementById("nbrFiles"),
                 i,
                 fname,
                 counter = 0;
 
-            this.clearFileNumberDisplay();
+            _clearFileNumberDisplay();
 
             for (i = 0; i < files.length; i += 1) {
                 fname = files[i].name;
@@ -85,9 +80,25 @@ controllers.controller('fileUploadCtrl', ['$scope',
             }
         };
 
-        $scope.clearFileNumberDisplay = function () {
-            var input = document.getElementById('nbrFiles');
-            input.value = "";
+        $scope.upload = function () {
+            _clearFileNumberDisplay();
+
+            $scope.layoutNames = Object.keys($scope.layoutFiles);
+            $scope.weightNames = Object.keys($scope.weightFiles);
+        };
+
+        $scope.deleteLayoutFile = function (file) {
+            _deleteFile(file, DELETE_LAYOUT_FILE);
+        };
+
+        $scope.deleteWeightFile = function (file) {
+            _deleteFile(file, DELETE_WEIGHT_FILE);
+        };
+
+        $scope.clearAll = function () {
+            $scope.layoutFiles = {};
+            $scope.weightFiles = {};
+
         };
 
         $scope.draw = function () {
@@ -120,11 +131,6 @@ controllers.controller('fileUploadCtrl', ['$scope',
             }
         };
 
-        var dropbox = document.getElementById("upload-drop-zone"),
-            dropText = 'Drop files here...',
-            invalidClass = 'invalid';
-
-        $scope.dropText = dropText;
 
         // init event handlers
         function dragEnterLeave(evt) {
@@ -148,6 +154,9 @@ controllers.controller('fileUploadCtrl', ['$scope',
             })
         }, false);
         dropbox.addEventListener("drop", function (evt) {
+
+            var files = evt.dataTransfer.files;
+
             evt.stopPropagation();
             evt.preventDefault();
             $scope.$apply(function () {
@@ -155,13 +164,16 @@ controllers.controller('fileUploadCtrl', ['$scope',
                 $scope.dropClass = '';
             });
 
-            var files = evt.dataTransfer.files;
             if (files.length > 0) {
                 $scope.$apply(function () {
                     for (var i = 0; i < files.length; i++) {
-                        if (files[i].name.indexOf(".json") > -1) {
-                            $scope.filenames.push(files[i].name);
-                            $scope.layoutFiles.push(files[i]);
+                        var fname = files[i].name;
+                        if (fname.indexOf(".json") > -1) {
+                            if (fname.indexOf(LFILE) > -1) {
+                                $scope.layoutFiles[fname] = files[i];
+                            } else if (fname.indexOf(WFILE) > -1) {
+                                $scope.weightFiles[fname] = files[i];
+                            }
                         } else {
                             $scope.dropText = 'Only json files are allowed!';
                             $scope.dropClass = invalidClass;

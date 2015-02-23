@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="col-sm-3">
                 <!--  Upload Layout Files Section -->
-                <div class="row">
+                <div class="row-fluid">
                     <div class="panel panel-default" id="layout_file_upload_zone">
                         <div class="panel-heading"><strong>Upload Layout File(s)</strong></div>
                             <div class="panel-body" ng-controller="fileUploadCtrl">
@@ -12,26 +12,26 @@
                                 <div ng-include="'views/upload.html'"></div>
                                 <div id="upload-drop-zone" class="upload-drop-zone" ng-class="dropClass"><span>{{dropText}}</span></div>
 
-                                <div class="row">
+                                <div class="row col-sm-12">
 
-                                    <div class="col col-sm-6">
-                                        <strong>Layout Files:</strong>
-                                        <ul class="list-unstyled pull-left">
-                                            <li ng-repeat="(fname, file) in layoutFiles">
-                                                <div><span class="glyphicon glyphicon-remove" ng-click="deleteLayoutFile(fname)"></span> {{fname}}</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col col-sm-6">
-                                        <strong>Weight Files: </strong>
+                                    <div><strong>Layout Files:</strong></div>
+                                    <ul class="list-unstyled pull-left">
+                                        <li ng-repeat="(fname, file) in layoutFiles">
+                                            <div><span class="glyphicon glyphicon-remove" ng-click="deleteLayoutFile(fname)"></span> {{fname}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="row col-sm-12">
+
+                                        <div><strong>Weight Files: </strong></div>
                                         <ul class="list-unstyled">
                                             <li ng-repeat="(fname, file) in weightFiles">
                                                 <div><span class="glyphicon glyphicon-remove" ng-click="deleteWeightFile(fname)"></span> {{fname}}</div>
                                             </li>
                                         </ul>
-                                    </div>
-
                                 </div>
+
 
                                 <button class="btn btn-xs btn-primary" ng-click="draw()">{{drawBtnName}}</button>
                                 <button class="btn btn-xs btn-primary" ng-click="score()">{{scoreBtnName}}</button>
