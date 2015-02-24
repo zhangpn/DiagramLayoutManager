@@ -7,14 +7,14 @@
 
 
 
-    "use strict";
+'use strict';
 
-    var DELIM = ">",
-        ID_SEPARATOR = "=:",
-        TOP = "T",
-        BOTTOM = "B",
-        LEFT = "L",
-        RIGHT = "R";
+    var DELIM = '>',
+        ID_SEPARATOR = '=:',
+        TOP = 'T',
+        BOTTOM = 'B',
+        LEFT = 'L',
+        RIGHT = 'R';
 
     var weights = {
         nbrOfComps: 1,
@@ -28,7 +28,7 @@
 
     var score = function (layout, weights) {
         if (!layout || !weights) {
-            return "Invalid input!";
+            return 'Invalid input!';
         }
         var properties = getPropertiesForScoring(layout);
         var finalScore = calculateFinalScore(properties, weights);
@@ -47,7 +47,46 @@
         return score;
     };
 
-//<editor-fold desc="Overlap Calculations">
+//<editor-fold desc='Overlap Calculations'>
+var _getOverlaps = function (coordinates) {
+    var stack = [],
+        list = [], // a list that contains pairs of overlapped components
+        topElm,
+        i,
+        index;
+
+    // iterate through each element in sorted array:
+    for (i = 0; i < coordinates.length; i += 1) {
+        var fields = coordinates[i].split(DELIM),
+            id = fields[2],
+            LorR = fields[1];
+
+        // if it is a left end point, push it onto the stack
+        if (LorR === LEFT) {
+            stack.push(id);
+        } else if (LorR === RIGHT) {
+            // if it is a right end point, keep iterating until Left point with matching id is found
+            // along the way, store visited elements in corresponding adjacency lists
+            index = stack.length - 1;
+            topElm = stack[index];
+            while (index > -1 && topElm !== id) {
+
+                // todo: possible optimization - just push the pair and have the intersecting function calculate the intersects
+                if (topElm > id) {
+                    list.push(topElm + DELIM + id);
+                } else {
+                    list.push(id + DELIM + topElm);
+                }
+                // point index to the next element
+                topElm = stack[--index];
+            }
+        }
+    }
+
+    // now clean up the adj lists to remove duplicates
+
+    return list;
+};
     var scoreComponentOverlap = function (nbrOfOverlaps, weight) {
         var score;
 
@@ -103,45 +142,6 @@
         return max;
     };
 
-    var _getOverlaps = function (coordinates) {
-        var stack = [],
-            list = [], // a list that contains pairs of overlapped components
-            topElm,
-            i,
-            index;
-
-        // iterate through each element in sorted array:
-        for (i = 0; i < coordinates.length; i += 1) {
-            var fields = coordinates[i].split(DELIM),
-                id = fields[2],
-                LorR = fields[1];
-
-            // if it is a left end point, push it onto the stack
-            if (LorR === LEFT) {
-                stack.push(id);
-            } else if (LorR === RIGHT) {
-                // if it is a right end point, keep iterating until Left point with matching id is found
-                // along the way, store visited elements in corresponding adjacency lists
-                index = stack.length - 1;
-                topElm = stack[index];
-                while (index > -1 && topElm !== id) {
-
-                    // todo: possible optimization - just push the pair and have the intersecting function calculate the intersects
-                    if (topElm > id) {
-                        list.push(topElm + DELIM + id);
-                    } else {
-                        list.push(id + DELIM + topElm);
-                    }
-                    // point index to the next element
-                    topElm = stack[--index];
-                }
-            }
-        }
-
-        // now clean up the adj lists to remove duplicates
-
-        return list;
-    };
 
 //</editor-fold>
 
@@ -157,6 +157,74 @@
 
         return score;
     };
+
+
+    /**
+     * Calculate number of crossings given coordinates of one direction
+     * @param coordinates - a string that can be split into 3 parts: [x/y coordinate, id, relative position to segment (L/R/T/B);
+     * id is made up of 2 parts: [connection id, line segment sub id]
+     * @returns {*} - adjacency list that contains all pairs of crossings for one direction
+     */
+    var _getCrossings = function (coordinates) {
+    var stack = [],
+        list = [],
+        topElm,
+        i,
+        index;
+
+    // iterate through each element in sorted array:
+    for (i = 0; i < coordinates.length; i += 1) {
+        var fields = coordinates[i].split(DELIM),
+            idStr = fields[1],
+            LorR = fields[2],
+            idFields = idStr.split(ID_SEPARATOR),
+            id = idFields[0];
+
+        // if it is a left or top end point, push it onto the stack
+        if (LorR === LEFT || LorR === TOP) {
+            stack.push(idStr);
+        } else if (LorR === RIGHT || LorR === BOTTOM) {
+            // if it is a right or bottom end point, keep iterating until Left point with matching id is found,
+            // remove it and keep going
+            index = stack.length - 1;
+            topElm = stack[index];
+            while (index > -1 && topElm !== idStr) {
+                // point index to the next element
+                topElm = stack[--index];
+            }
+            // remove the counterpart
+            stack.splice(index, 1);
+
+        } else {
+            // if LorR is undefined, aka if it's a line of the opposite plane that we are looking at,
+            // go through the stack and record all segments until reaching the end
+            index = stack.length - 1;
+            topElm = stack[index];
+            // if segments belong to the same connection, ignore it
+            if (topElm) {
+
+                var topElmConnIdFields = topElm.split(ID_SEPARATOR),
+                    topElmConnId = topElmConnIdFields[0];
+
+                while (index > -1) {
+                    if (topElmConnId !== id) {
+
+                        if (idStr > topElm) {
+                            list.push(idStr + DELIM + topElm);
+                        } else {
+                            list.push(topElm + DELIM + idStr);
+                        }
+                    }
+                    // point index to the next element
+                    topElm = stack[--index];
+                }
+            }
+        }
+    }
+
+    return list;
+};
+
 
     var scoreConnectionCrossing = function (nbrOfCrossings, weight) {
         var score = nbrOfCrossings * weight;
@@ -231,77 +299,6 @@
         return nbrOfCrossings;
     };
 
-
-    /**
-     * Calculate number of crossings given coordinates of one direction
-     * @param coordinates - a string that can be split into 3 parts: [x/y coordinate, id, relative position to segment (L/R/T/B);
-     * id is made up of 2 parts: [connection id, line segment sub id]
-     * @returns {*} - adjacency list that contains all pairs of crossings for one direction
-     */
-    var _getCrossings = function (coordinates) {
-        var stack = [],
-            list = [],
-            topElm,
-            i,
-            index;
-
-        // iterate through each element in sorted array:
-        for (i = 0; i < coordinates.length; i += 1) {
-            var fields = coordinates[i].split(DELIM),
-                idStr = fields[1],
-                LorR = fields[2],
-                idFields = idStr.split(ID_SEPARATOR),
-                id = idFields[0];
-
-            if (idStr === "C_4=:1") {
-                var a = 1 + 1;
-            }
-
-
-            // if it is a left or top end point, push it onto the stack
-            if (LorR === LEFT || LorR === TOP) {
-                stack.push(idStr);
-            } else if (LorR === RIGHT || LorR === BOTTOM) {
-                // if it is a right or bottom end point, keep iterating until Left point with matching id is found,
-                // remove it and keep going
-                index = stack.length - 1;
-                topElm = stack[index];
-                while (index > -1 && topElm !== idStr) {
-                    // point index to the next element
-                    topElm = stack[--index];
-                }
-                // remove the counterpart
-                stack.splice(index, 1);
-
-            } else {
-                // if LorR is undefined, aka if it's a line of the opposite plane that we are looking at,
-                // go through the stack and record all segments until reaching the end
-                index = stack.length - 1;
-                topElm = stack[index];
-                // if segments belong to the same connection, ignore it
-                if (topElm) {
-
-                    var topElmConnIdFields = topElm.split(ID_SEPARATOR),
-                        topElmConnId = topElmConnIdFields[0];
-
-                    while (index > -1) {
-                        if (topElmConnId !== id) {
-
-                            if (idStr > topElm) {
-                                list.push(idStr + DELIM + topElm);
-                            } else {
-                                list.push(topElm + DELIM + idStr);
-                            }
-                        }
-                        // point index to the next element
-                        topElm = stack[--index];
-                    }
-                }
-            }
-        }
-
-        return list;
-    };
 
     /**
      * For now add nbrOfTurns of each connection
@@ -446,24 +443,24 @@
 //    } else {
 //
 //    }
-        console.log("**********Property Values***********");
+        console.log('**********Property Values***********');
         prettyPrint(properties, true);
-        console.log("\n\n**********Property Weights***********");
+        console.log('\n\n**********Property Weights***********');
         prettyPrint(weights, true);
-        console.log("\n\n**********Final Scores***********");
+        console.log('\n\n**********Final Scores***********');
         prettyPrint(finalScore, true);
     };
 
     var prettyPrint = function (obj, printToConsole) {
         var i,
-            printString = "";
+            printString = '';
         if (Array.isArray(obj)) {
 
             for (i = 0; i < obj.length; i += 1) {
                 if (printToConsole) {
                     console.log(obj[i]);
                 } else {
-                    printString += obj[i] + "\n";
+                    printString += obj[i] + '\n';
                 }
             }
         } else {
@@ -478,23 +475,23 @@
 
     var prettyPrintObjRec = function (obj, tabs) {
         var i,
-            tabsString = "",
-            printString = "",
+            tabsString = '',
+            printString = '',
             objVal;
 
         for (i = 0; i < tabs; i += 1) {
-            tabsString += "\t";
+            tabsString += '\t';
         }
 
         for (i in obj) {
             if (obj.hasOwnProperty(i)) {
 
-                if (typeof obj[i] !== "object" && !Array.isArray(obj[i])) {
+                if (typeof obj[i] !== 'object' && !Array.isArray(obj[i])) {
                     objVal = obj[i];
                 } else {
-                    objVal = "";
+                    objVal = '';
                 }
-                printString += tabsString + i + ": " + objVal + "\n";
+                printString += tabsString + i + ': ' + objVal + '\n';
                 printString += prettyPrintObjRec(obj[i], tabs + 1);
             }
         }

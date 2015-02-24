@@ -11,13 +11,13 @@ var controllers = angular.module('controllers', []);
 controllers.controller('fileUploadCtrl', ['$scope',
     function($scope) {
 
-        var DELETE_LAYOUT_FILE = "L",
-            DELETE_WEIGHT_FILE = "W",
-            DELETE_ALL = "A",
-            EXT = ".json",
-            WFILE = "weight",
-            LFILE = "layout",
-            dropbox = document.getElementById("upload-drop-zone"),
+        var DELETE_LAYOUT_FILE = 'L',
+            DELETE_WEIGHT_FILE = 'W',
+            DELETE_ALL = 'A',
+            EXT = '.json',
+            WFILE = 'weight',
+            LFILE = 'layout',
+            dropbox = document.getElementById('upload-drop-zone'),
             dropText = 'Drop files here...',
             invalidClass = 'invalid',
             _deleteFile,
@@ -36,13 +36,13 @@ controllers.controller('fileUploadCtrl', ['$scope',
 
         _clearFileNumberDisplay = function () {
             var input = document.getElementById('nbrFiles');
-            input.value = "";
+            input.value = '';
         };
 
 
-        $scope.drawBtnName = "Draw";
-        $scope.scoreBtnName = "Score";
-        $scope.resetBtnName = "Reset";
+        $scope.drawBtnName = 'Draw';
+        $scope.scoreBtnName = 'Score';
+        $scope.resetBtnName = 'Reset';
         $scope.dropText = dropText;
 
         $scope.layoutFiles = {};
@@ -54,7 +54,7 @@ controllers.controller('fileUploadCtrl', ['$scope',
 
         $scope.displayNbrOfFiles = function (elm) {
             var files = elm.files,
-                input = document.getElementById("nbrFiles"),
+                input = document.getElementById('nbrFiles'),
                 i,
                 fname,
                 counter = 0;
@@ -75,8 +75,8 @@ controllers.controller('fileUploadCtrl', ['$scope',
             }
 
             if (counter > 0) {
-                input.value = counter === 1 ? counter + " file selected"
-                    : counter + " files selected";
+                input.value = counter === 1 ? counter + ' file selected'
+                    : counter + ' files selected';
             }
         };
 
@@ -102,7 +102,7 @@ controllers.controller('fileUploadCtrl', ['$scope',
         };
 
         $scope.draw = function () {
-            var holder = document.getElementById("myholder"),
+            var holder = document.getElementById('myholder'),
                 parsedJSONFileContent,
                 graph,
                 paper;
@@ -127,7 +127,7 @@ controllers.controller('fileUploadCtrl', ['$scope',
 
                 reader.readAsText($scope.layoutFiles[Object.keys($scope.layoutFiles)[0]]);
             } else {
-                holder.innerHTML = "No layout file is provided!";
+                holder.innerHTML = 'No layout file is provided!';
             }
         };
 
@@ -138,22 +138,22 @@ controllers.controller('fileUploadCtrl', ['$scope',
             evt.preventDefault();
             $scope.$apply(function () {
                 $scope.dropText = dropText;
-                $scope.dropClass = ''
-            })
+                $scope.dropClass = '';
+            });
         }
 
-        dropbox.addEventListener("dragenter", dragEnterLeave, false);
-        dropbox.addEventListener("dragleave", dragEnterLeave, false);
-        dropbox.addEventListener("dragover", function (evt) {
+        dropbox.addEventListener('dragenter', dragEnterLeave, false);
+        dropbox.addEventListener('dragleave', dragEnterLeave, false);
+        dropbox.addEventListener('dragover', function (evt) {
             evt.stopPropagation();
             evt.preventDefault();
             var ok = evt.dataTransfer && evt.dataTransfer.types && evt.dataTransfer.types.indexOf('Files') >= 0;
             $scope.$apply(function () {
                 $scope.dropText = ok ? dropText : 'Only files are allowed!';
                 $scope.dropClass = ok ? 'over' : invalidClass;
-            })
+            });
         }, false);
-        dropbox.addEventListener("drop", function (evt) {
+        dropbox.addEventListener('drop', function (evt) {
 
             var files = evt.dataTransfer.files;
 
@@ -168,7 +168,7 @@ controllers.controller('fileUploadCtrl', ['$scope',
                 $scope.$apply(function () {
                     for (var i = 0; i < files.length; i++) {
                         var fname = files[i].name;
-                        if (fname.indexOf(".json") > -1) {
+                        if (fname.indexOf('.json') > -1) {
                             if (fname.indexOf(LFILE) > -1) {
                                 $scope.layoutFiles[fname] = files[i];
                             } else if (fname.indexOf(WFILE) > -1) {
@@ -179,15 +179,15 @@ controllers.controller('fileUploadCtrl', ['$scope',
                             $scope.dropClass = invalidClass;
                         }
                     }
-                })
+                });
             }
 
         });
 
-        var propertyHolder = document.getElementById("properties");
+        var propertyHolder = document.getElementById('properties');
 
         $scope.score = function () {
-            var holder = document.getElementById("properties"),
+            var holder = document.getElementById('properties'),
                 jsonObj;
 
             if (Object.keys($scope.layoutFiles).length > 0) {
@@ -205,7 +205,7 @@ controllers.controller('fileUploadCtrl', ['$scope',
 
                 reader.readAsText($scope.weightFiles[Object.keys($scope.weightFiles)[0]]);
             } else {
-                holder.innerHTML = "No layout file is provided!";
+                holder.innerHTML = 'No layout file is provided!';
             }
         };
     }
