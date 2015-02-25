@@ -16,6 +16,14 @@
     "requirejs": ">=2.1.15",
     "underscore": ">=1.7.0"
   },
+  "devDependencies": {
+    "browserify": "latest",
+    "watchify": "latest"
+  },
+  "scripts": {
+    "build-js": "browserify public/js/app.js > public/js/bundle.js -d",
+    "watch-js": "watchify public/js/app.js > public/js/bundle.js -dv"
+  },
   "bugs": {
     "url": "https://github.com/zhangpn/DiagramLayoutManager/issues"
   },
