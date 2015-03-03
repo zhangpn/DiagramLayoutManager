@@ -497,3 +497,5 @@ var _getOverlaps = function (coordinates) {
         }
         return printString;
     };
+
+module.exports = score;

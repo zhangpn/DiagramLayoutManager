@@ -176,3 +176,5 @@ var parseLayout = function (layout, graph) {
 
 };
 //</editor-fold>
+
+module.exports = parseLayout;
