@@ -1,8 +1,11 @@
 *.log
 
+// WebStorm temp dir
 .idea
-node_modules
 
+// npm and bower dependencies
+node_modules
 public/libs
 
+// generated scripts
 bundle.js
