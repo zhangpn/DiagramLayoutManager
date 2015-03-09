@@ -1,6 +1,8 @@
 /**
  * Created by zhangpn on 3/3/2015.
  */
+
+
 var prettyPrint = function (obj, printToConsole) {
     var i,
         printString = '';
@@ -47,3 +49,5 @@ var prettyPrintObjRec = function (obj, tabs) {
     }
     return printString;
 };
+
+module.exports = prettyPrint;

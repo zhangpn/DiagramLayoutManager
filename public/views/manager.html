@@ -66,11 +66,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>Score</strong></div>
+                        <div class="panel-body" id="score">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script type="text/javascript" src="../js/parseLayout.js"></script>
+    <!--<script type="text/javascript" src="../js/parseLayout.js"></script>-->
 
     <script>
         //        var drawBtn = document.getElementById("drawDiagram");
@@ -80,52 +87,52 @@
         //        var layouts = document.getElementById("upload_layout_files").files[0];
 
 
-        var layoutFileDropTarget = $(document.getElementById("drop-zone-layout")),
-                weightFileDropTarget = $(document.getElementById("drop-zone-weight"));
-
-        var layoutFileGroup = $(document.getElementById("layout_file_group")),
-                weightFileGroup = $(document.getElementById("weight_file_group"));
-
-        var drawDiagramBtn = $(document.getElementById("drawDiagram")),
-                scoreDiagramBtn = $(document.getElementById("scoreDiagram"));
-
-
-        drawDiagramBtn.on("click", function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-            drawDiagram();
-        });
-
-        scoreDiagramBtn.on("click", function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-            scoreDiagram();
-        });
-
-        drawDiagramBtn.mouseup(function(){
-            $(this).blur();
-        });
-
-        var clearScreen = $(document.getElementById("clear1"));
+//        var layoutFileDropTarget = $(document.getElementById("drop-zone-layout")),
+//                weightFileDropTarget = $(document.getElementById("drop-zone-weight"));
+//
+//        var layoutFileGroup = $(document.getElementById("layout_file_group")),
+//                weightFileGroup = $(document.getElementById("weight_file_group"));
+//
+//        var drawDiagramBtn = $(document.getElementById("drawDiagram")),
+//                scoreDiagramBtn = $(document.getElementById("scoreDiagram"));
 
 
-
-        clearScreen.mouseup(function(){
-            $(this).blur();
-        });
-        clearScreen.on("click", function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-            $(holder).empty();
-        });
-
-
-        $("#clear2").mouseup(function(){
-            $(this).blur();
-        });
-        $("#scoreDiagram").mouseup(function(){
-            $(this).blur();
-        });
+//        drawDiagramBtn.on("click", function (event) {
+//            event.stopPropagation();
+//            event.preventDefault();
+//            drawDiagram();
+//        });
+//
+//        scoreDiagramBtn.on("click", function (event) {
+//            event.stopPropagation();
+//            event.preventDefault();
+//            scoreDiagram();
+//        });
+//
+//        drawDiagramBtn.mouseup(function(){
+//            $(this).blur();
+//        });
+//
+//        var clearScreen = $(document.getElementById("clear1"));
+//
+//
+//
+//        clearScreen.mouseup(function(){
+//            $(this).blur();
+//        });
+//        clearScreen.on("click", function (event) {
+//            event.stopPropagation();
+//            event.preventDefault();
+//            $(holder).empty();
+//        });
+//
+//
+//        $("#clear2").mouseup(function(){
+//            $(this).blur();
+//        });
+//        $("#scoreDiagram").mouseup(function(){
+//            $(this).blur();
+//        });
 
 
     </script>

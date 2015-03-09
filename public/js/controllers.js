@@ -8,6 +8,7 @@
 
 var parseLayout = require('./parseLayout.js');
 var score = require('./score.js');
+var prettyPrint = require('./prettyPrint.js');
 
 module.exports = function ($scope) {
     var DELETE_LAYOUT_FILE = 'L',
@@ -186,8 +187,10 @@ module.exports = function ($scope) {
     var propertyHolder = document.getElementById('properties');
 
     $scope.score = function () {
-        var holder = document.getElementById('properties'),
-            jsonObj,
+        var propHolder = document.getElementById('properties'),
+            weightHolder = document.getElementById('weights'),
+            scoreHolder = document.getElementById('score'),
+            weight,
             result;
 
         if (Object.keys($scope.layoutFiles).length > 0) {
@@ -195,18 +198,20 @@ module.exports = function ($scope) {
             var reader = new FileReader();
             reader.onload = function(e) {
                 if (e.target && e.target.result) {
-                    jsonObj = JSON.parse(e.target.result);
+                    weight = JSON.parse(e.target.result);
                 }
 
                 var layout = Object.keys($scope.layoutFiles)[0];
 
-                result = score($scope.layouts[layout], jsonObj);
-                holder.textContent = result.
+                result = score($scope.layouts[layout], weight);
+                propHolder.textContent = prettyPrint(result.properties, false);
+                weightHolder.textContent = prettyPrint(result.weights, false);
+                scoreHolder.textContent = prettyPrint(result.score, false);
             };
 
             reader.readAsText($scope.weightFiles[Object.keys($scope.weightFiles)[0]]);
         } else {
-            holder.innerHTML = 'No layout file is provided!';
+            propHolder.innerHTML = 'No layout file is provided!';
         }
     };
 };

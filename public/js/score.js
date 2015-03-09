@@ -438,19 +438,4 @@ var _getOverlaps = function (coordinates) {
         return intersection.length;
     };
 
-    var printFinalScore = function (finalScore) {
-//    if (window && window.console) {
-//
-//    } else {
-//
-//    }
-        console.log('**********Property Values***********');
-        prettyPrint(properties, true);
-        console.log('\n\n**********Property Weights***********');
-        prettyPrint(weights, true);
-        console.log('\n\n**********Final Scores***********');
-        prettyPrint(finalScore, true);
-    };
-
-
 module.exports = score;
