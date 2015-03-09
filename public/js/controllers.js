@@ -187,7 +187,8 @@ module.exports = function ($scope) {
 
     $scope.score = function () {
         var holder = document.getElementById('properties'),
-            jsonObj;
+            jsonObj,
+            result;
 
         if (Object.keys($scope.layoutFiles).length > 0) {
 
@@ -199,7 +200,8 @@ module.exports = function ($scope) {
 
                 var layout = Object.keys($scope.layoutFiles)[0];
 
-                score($scope.layouts[layout], jsonObj);
+                result = score($scope.layouts[layout], jsonObj);
+                holder.textContent = result.
             };
 
             reader.readAsText($scope.weightFiles[Object.keys($scope.weightFiles)[0]]);
