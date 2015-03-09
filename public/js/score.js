@@ -1,11 +1,6 @@
 /**
  * Created by dana on 2/22/15.
  */
-/**
- * Created by Dana Zhang on 12/8/2014.
- */
-
-
 
 'use strict';
 
@@ -15,15 +10,6 @@
         BOTTOM = 'B',
         LEFT = 'L',
         RIGHT = 'R';
-
-    var weights = {
-        nbrOfComps: 1,
-        nbrOfConns: 1,
-        nbrOfOverlaps: -0.5,
-        nbrOfCrossings: -1,
-        nbrOfTurns: -0.5, // could be exponential
-        pathLengths: -0.5
-    };
 
 
     var score = function (layout, weights) {
