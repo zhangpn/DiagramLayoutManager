@@ -22,6 +22,7 @@ var prettyPrint = function (obj, printToConsole) {
             console.log(printString);
         }
     }
+
     return printString;
 };
 

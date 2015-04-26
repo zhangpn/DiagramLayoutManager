@@ -15,7 +15,7 @@ app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
             .when('/home', {
-                'templateUrl': 'views/home.html'
+                'templateUrl': 'views/homepage.html'
             })
             .when('/manager', {
                 'templateUrl': 'views/manager.html'
