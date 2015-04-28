@@ -5,7 +5,7 @@
 
 // npm and bower dependencies
 node_modules
-public/libs
+libs
 
 // generated scripts
 bundle.js
