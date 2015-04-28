@@ -7,7 +7,7 @@ var morgan = require('morgan');             // log requests to the console (expr
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 
-app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));
 
 app.listen(8080);

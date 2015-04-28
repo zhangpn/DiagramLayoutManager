@@ -1,0 +1,160 @@
+<div class="manage">
+
+    <header id="header">
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#home">Diagram Manager</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="about-us.html">About</a></li>
+                        <li class="active"><a href="#">Manage</a></li>
+                        <li><a href="contact-us.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.container-->
+        </nav>
+        <!--/nav-->
+
+    </header>
+    <!--/header-->
+
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url(../images/8.jpg)">
+                    <div class="container-fluid">
+                        <div class="col-sm-3">
+                            <!--  Upload Layout Files Section -->
+                            <div class="row-fluid">
+                                <div class="panel panel-default" id="layout_file_upload_zone">
+                                    <div class="panel-heading"><strong>Upload Layout File(s)</strong></div>
+                                    <div class="panel-body" ng-controller="fileUploadCtrl">
+
+                                        <div ng-include="'views/upload.html'"></div>
+                                        <div id="upload-drop-zone" class="upload-drop-zone" ng-class="dropClass">
+                                            <span>{{dropText}}</span></div>
+
+                                        <div class="row col-sm-12">
+
+                                            <div><strong>Layout Files:</strong></div>
+                                            <ul class="list-unstyled pull-left">
+                                                <li ng-repeat="(fname, file) in layoutFiles">
+                                                    <div><span class="glyphicon glyphicon-remove"
+                                                               ng-click="deleteLayoutFile(fname)"></span> {{fname}}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row col-sm-12">
+
+                                            <div><strong>Weight Files: </strong></div>
+                                            <ul class="list-unstyled">
+                                                <li ng-repeat="(fname, file) in weightFiles">
+                                                    <div><span class="glyphicon glyphicon-remove"
+                                                               ng-click="deleteWeightFile(fname)"></span> {{fname}}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+                                        <button class="btn btn-xs btn-primary" ng-click="draw()">{{drawBtnName}}
+                                        </button>
+                                        <button class="btn btn-xs btn-primary" ng-click="score()">{{scoreBtnName}}
+                                        </button>
+                                        <button class="btn btn-xs btn-warning pull-right" ng-click="clearAll()">
+                                            {{resetBtnName}}
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Upload Layout Files Section Ends -->
+
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="panel panel-primary dialog-panel" id="myholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><strong>Properties</strong></div>
+                                    <div class="panel-body" id="properties">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><strong>Weights</strong></div>
+                                    <div class="panel-body" id="weights">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><strong>Score</strong></div>
+                                    <div class="panel-body" id="score">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--/.item-->
+
+            <!--/.carousel-inner-->
+        </div>
+        <!--/.carousel-->
+    </section>
+    <!--/#main-slider-->
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2015 <a target="_blank" href="http://www.isis.vanderbilt.edu"
+                                   title="Free Twitter Bootstrap WordPress Themes and HTML templates">Vanderbilt
+                    University</a>.
+                    All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Report Bugs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.prettyPhoto.js"></script>
+    <script src="../js/jquery.isotope.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/wow.min.js"></script>
+</div>
