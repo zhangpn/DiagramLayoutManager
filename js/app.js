@@ -20,6 +20,9 @@ app.config(['$routeProvider',
             .when('/manage', {
                 'templateUrl': 'views/manager.html'
             })
+            .when('/about', {
+                'templateUrl': 'views/about-us.html'
+            })
             .otherwise({
                 'redirectTo': '/home'
             });
