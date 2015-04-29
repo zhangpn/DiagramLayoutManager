@@ -98,7 +98,8 @@ module.exports = function ($scope) {
     $scope.clearAll = function () {
         $scope.layoutFiles = {};
         $scope.weightFiles = {};
-
+        var holder = $(document.getElementById('myholder'));
+        holder.empty();
     };
 
     $scope.draw = function () {
@@ -107,27 +108,31 @@ module.exports = function ($scope) {
             graph,
             paper;
 
-        if (Object.keys($scope.layoutFiles).length > 0) {
 
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                if (e.target && e.target.result) {
-                    parsedJSONFileContent = JSON.parse(e.target.result);
-                }
-                graph = new joint.dia.Graph;
-                paper = new joint.dia.Paper({
-                    el: $('#myholder'),
-                    model: graph
-                });
-
-
-                $scope.layouts[Object.keys($scope.layoutFiles)[0]] = parsedJSONFileContent;
-                parseLayout(parsedJSONFileContent, graph);
-            };
-
-            reader.readAsText($scope.layoutFiles[Object.keys($scope.layoutFiles)[0]]);
-        } else {
+        if (!Object.keys($scope.layoutFiles).length){
             holder.innerHTML = 'No layout file is provided!';
+        } else {
+
+            for (var i = 0; i < Object.keys($scope.layoutFiles).length; i += 1) {
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    if (e.target && e.target.result) {
+                        parsedJSONFileContent = JSON.parse(e.target.result);
+                    }
+                    graph = new joint.dia.Graph;
+                    paper = new joint.dia.Paper({
+                        el: $('#myholder'),
+                        model: graph
+                    });
+
+
+                    $scope.layouts[Object.keys($scope.layoutFiles)[0]] = parsedJSONFileContent;
+                    parseLayout(parsedJSONFileContent, graph);
+                };
+
+                reader.readAsText($scope.layoutFiles[Object.keys($scope.layoutFiles)[i]]);
+            }
         }
     };
 
