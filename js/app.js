@@ -23,6 +23,9 @@ app.config(['$routeProvider',
             .when('/about', {
                 'templateUrl': 'views/about-us.html'
             })
+            .when('/contact', {
+                'templateUrl': 'views/contact-us.html'
+            })
             .otherwise({
                 'redirectTo': '/home'
             });

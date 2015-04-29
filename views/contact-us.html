@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Blog Single | Corlate</title>
-    
-    <!-- core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/prettyPhoto.css" rel="stylesheet">
-    <link href="../css/animate.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="../css/responsive.css" rel="stylesheet">
-    
-    <!--[if lt IE 9]>
-    <script src="../js/html5shiv.js"></script>
-    <script src="../js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="../images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
-
-<body>
-
     <header id="header">
 
         <nav class="navbar navbar-inverse" role="banner">
@@ -44,10 +14,10 @@
 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="about-us.html">About</a></li>
-                        <li><a href="manager.html">Manage</a></li>
-                        <li class="active"><a href="./contact-us.html">Contact</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#manage">Manage</a></li>
+                        <li class="active"><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,6 +27,7 @@
     </header><!--/header-->
 
     <section id="contact-info">
+        <br>
         <div class="center">                
             <h2>How to Reach Us?</h2>
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -66,7 +37,9 @@
                 <div class="row">
                     <div class="col-sm-5 text-center">
                         <div class="gmap">
-                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps/?ll=36.1449041,-86.7932106&amp;z=17&amp;output=embed"></iframe>
+                            <!-- To generate the src url, go to location on google maps and then click on the settings icon -> embed link
+                             http://www.lgam.info/how-to-embed-a-google-map-in-a-page -->
+                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1610.9400371412296!2d-86.79293657726858!3d36.14513316997918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886466907323ba9f%3A0xd24b968e8be0e8f!2s1025+16th+Ave+S%2C+Vanderbilt+University%2C+Nashville%2C+TN+37212%2C+USA!5e0!3m2!1sen!2sau!4v1430340918732"></iframe>
                         </div>
                     </div>
 
@@ -74,39 +47,12 @@
                         <ul class="row">
                             <li class="col-sm-6">
                                 <address>
-                                    <h5>Head Office</h5>
-                                    <p>1537 Flint Street <br>
-                                    Tumon, MP 96911</p>
-                                    <p>Phone:670-898-2847 <br>
-                                    Email Address:info@domain.com</p>
+                                    <h5>Our Office</h5>
+                                    <p>1025 16th Ave S <br>
+                                    Nashville, TN 37212</p>
+                                    <p>Email Address: zhangpn@isis.vanderbilt.edu</p>
                                 </address>
 
-                                <address>
-                                    <h5>Zonal Office</h5>
-                                    <p>1537 Flint Street <br>
-                                    Tumon, MP 96911</p>                                
-                                    <p>Phone:670-898-2847 <br>
-                                    Email Address:info@domain.com</p>
-                                </address>
-                            </li>
-
-
-                            <li class="col-sm-6">
-                                <address>
-                                    <h5>Zone#2 Office</h5>
-                                    <p>1537 Flint Street <br>
-                                    Tumon, MP 96911</p>
-                                    <p>Phone:670-898-2847 <br>
-                                    Email Address:info@domain.com</p>
-                                </address>
-
-                                <address>
-                                    <h5>Zone#3 Office</h5>
-                                    <p>1537 Flint Street <br>
-                                    Tumon, MP 96911</p>
-                                    <p>Phone:670-898-2847 <br>
-                                    Email Address:info@domain.com</p>
-                                </address>
                             </li>
                         </ul>
                     </div>
@@ -117,6 +63,7 @@
 
     <section id="contact-page">
         <div class="container">
+            <br>
             <div class="center">        
                 <h2>Drop Your Message</h2>
                 <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -160,95 +107,4 @@
         </div><!--/.container-->
     </section><!--/#contact-page-->
 
-    <section id="bottom">
-        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Company</h3>
-                        <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">We are hiring</a></li>
-                            <li><a href="#">Meet the team</a></li>
-                            <li><a href="#">Copyright</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Forum</a></li>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Refund policy</a></li>
-                            <li><a href="#">Ticket system</a></li>
-                            <li><a href="#">Billing system</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Developers</h3>
-                        <ul>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">SEO Marketing</a></li>
-                            <li><a href="#">Theme</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Email Marketing</a></li>
-                            <li><a href="#">Plugin Development</a></li>
-                            <li><a href="#">Article Writing</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Our Partners</h3>
-                        <ul>
-                            <li><a href="#">Adipisicing Elit</a></li>
-                            <li><a href="#">Eiusmod</a></li>
-                            <li><a href="#">Tempor</a></li>
-                            <li><a href="#">Veniam</a></li>
-                            <li><a href="#">Exercitation</a></li>
-                            <li><a href="#">Ullamco</a></li>
-                            <li><a href="#">Laboris</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-            </div>
-        </div>
-    </section><!--/#bottom-->
-
-    <footer id="footer" class="midnight-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-                </div>
-                <div class="col-sm-6">
-                    <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer><!--/#footer-->
-
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.prettyPhoto.js"></script>
-    <script src="../js/jquery.isotope.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/wow.min.js"></script>
-</body>
-</html>
+    <div ng-include="'views/footer.html'"></div>
