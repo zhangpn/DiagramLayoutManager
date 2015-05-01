@@ -5,4 +5,5 @@ Bower and Browserify are both dependent Node modules for this project. Run the f
  `sudo npm install -g browserify`
 
 Generate the bundle.js script by running `npm run build-js` or `npm run watch-js`
-To run the manager, open index.html with a simple local host.
+In case of npm run command error, run this command directly to build js scripts: `browserify js/app.js > js/bundle.js -d`
+To run the manager, run `node server.js` in the project root directory and open up `localhost:8080` on your browser
