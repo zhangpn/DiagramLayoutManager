@@ -11,21 +11,25 @@
     "amdefine": ">=0.1.0",
     "bootstrap": ">=3.3.2",
     "commander": ">=2.6.0",
-    "jointjs": "^0.8.0",
     "jszip": ">=2.4.0",
-    "underscore": ">=1.7.0"
+    "underscore": ">=1.7.0",
+    "express": "^4.12.3",
+    "morgan": "^1.5.2",
+    "body-parser": "^1.12.3",
+    "method-override": "^2.3.2",
+    "jointjs": "^0.8.0"
   },
   "devDependencies": {
     "browserify": "latest",
     "watchify": "latest"
   },
   "scripts": {
-    "build-js": "browserify public/js/app.js > public/js/bundle.js -d",
-    "watch-js": "watchify public/js/app.js > public/js/bundle.js -dv"
+    "build-js": "browserify js/app.js > js/bundle.js -d",
+    "watch-js": "watchify js/app.js > js/bundle.js -dv"
   },
   "browser": {
     "angular": "./angular-index.js",
-    "angular-route": "./public/libs/angular-route/angular-route.js"
+    "angular-route": "./libs/angular-route/angular-route.js"
   },
   "bugs": {
     "url": "https://github.com/zhangpn/DiagramLayoutManager/issues"
