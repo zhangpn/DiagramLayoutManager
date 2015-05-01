@@ -19,7 +19,11 @@
 input[readonly] {
     background-color: white !important;
     cursor: text !important;
-    max-width: 60%;
+}
+
+input#nbrFiles {
+    width: initial;
+    height: 24px;
 }
 
 /* Reference site -- https://coderwall.com/p/xpahmg/bootstrap-3-input-xs-since-it-doesn-t-exists */
